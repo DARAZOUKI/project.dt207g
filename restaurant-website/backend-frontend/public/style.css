@@ -1,0 +1,379 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Header styling */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #FFD700;
+}
+
+.lock-icon {
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.lock-icon img {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+}
+
+.lock-icon:hover {
+    transform: scale(1.1);
+}
+
+main {
+    padding: 20px;
+}
+section {
+    margin-bottom: 40px;
+}
+
+
+h2 {
+    color: #333;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    animation: fadeInUp 1s ease-in-out;
+    text-align: center;
+}
+
+p {
+    
+    line-height: 1.6;
+}
+/* About section styles */
+.about-content {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-image img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+/* Contact Us styles */
+.contact-us {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.contact-us ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-us ul li {
+    margin-bottom: 10px;
+}
+
+.contact-us ul li strong {
+    color: #333;
+}
+#menu-items, .menu-item {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.menu-item {
+    width: 30%;
+    margin: 10px;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.menu-item:hover {
+    transform: scale(1.05);
+}
+
+.menu-item h3, .menu-item p {
+    margin: 0 0 10px;
+}
+.menu-items-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.item-details {
+    margin-bottom: 10px;
+}
+
+.item-price {
+    font-weight: bold;
+}
+
+.item-image img {
+    display: block;
+    margin-top: 10px;
+}
+
+
+#about {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+    border-radius: 8px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+#about img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+#reservation {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+.lock-icon {
+    position: fixed;
+    top: 20px;
+    left: 10px;
+    cursor: pointer;
+    z-index: 1000; /* Ensure it's on top */
+}
+
+.lock-icon img {
+    width: 20px;
+    height: 20px;
+    
+}
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.lock-icon {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 1000; /* Ensure it's on top */
+}
+
+.lock-icon img {
+    width: 30px;
+    height: 30px;
+}
+.reservation-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reservation-form .form-group {
+    margin-bottom: 15px;
+}
+
+.reservation-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.reservation-form .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.reservation-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffd700;
+    color: #070707;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.reservation-button:hover {
+    background-color: #d79b00;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Adjustments for smaller screens */
+@media only screen and (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo-container {
+        margin-bottom: 20px;
+    }
+
+    nav ul {
+        margin-top: 20px;
+    }
+
+    .lock-icon {
+        margin-top: 20px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    .menu-item {
+        width: 100%;
+    }
+
+    .about-content {
+        flex-direction: column;
+    }
+
+    .about-image {
+        margin-top: 20px;
+    }
+
+    .contact-us {
+        margin-top: 20px;
+    }
+
+    .reservation-form {
+        max-width: 100%;
+    }
+}
+
+/* Adjustments for even smaller screens (e.g., smartphones) */
+@media only screen and (max-width: 480px) {
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    nav ul li {
+        margin: 0 10px;
+    }
+
+    .lock-icon img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .menu-items-container {
+        padding: 0 10px;
+    }
+
+    .menu-item {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .about-content {
+        padding: 0 10px;
+    }
+
+    .about-image img {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .contact-us {
+        padding: 10px;
+    }
+
+    .reservation-form {
+        padding: 10px;
+    }
+}

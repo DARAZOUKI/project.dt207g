@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jafra</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="logo.jpg" alt="Jafra Logo" class="logo">
+                <h1>Jafra</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#reservation">Reservation</a></li>
+                </ul>
+            </nav>
+            <div class="lock-icon" onclick="redirectToLogin()">
+                <img src="lock-icon.jpg" alt="Admin Login">
+            </div>
+        </div>
+    </header>
+    <main>
+        <section id="menu">
+            <h2>Jafra Menu</h2>
+            <div id="menu-items" class="menu-items-container"></div>
+        </section>
+        <section id="about">
+            <h2>About Jafra</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p><strong>Jafra</strong> is a premier Palestinian restaurant located in the heart of Stockholm, offering a luxurious dining experience with a variety of traditional Palestinian dishes and desserts. We pride ourselves on delivering an authentic culinary journey that reflects the rich heritage of Palestinian cuisine.</p>
+                </div>
+                    <div class="about-image">
+                        <img src="image1.jpg" alt="Restaurant Image">
+                    </div>
+                </div>
+                    
+                    <div class="contact-us">
+                    <p><strong>Contact Us:</strong></p>
+                    <ul>
+                        <li><strong>Address:</strong> Mariatorget 3, Stockholm, Sweden</li>
+                        <li><strong>Phone:</strong> 078952312</li>
+                        <li><strong>Email:</strong> Jafra.palastine@gmail.com</li>
+                    </ul>
+                </div>
+               
+        </section>
+        <section id="reservation">
+            <h2>Make a Reservation at Jafra</h2>
+            <form id="reservation-form" class="reservation-form">
+                <div class="form-group">
+                    <label for="res-name">Name</label>
+                    <input type="text" id="res-name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="res-phone">Phone Number</label>
+                    <input type="tel" id="res-phone" placeholder="Your Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <label for="res-date">Date</label>
+                    <input type="date" id="res-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="res-guests">Number of Guests</label>
+                    <input type="number" id="res-guests" placeholder="Number of Guests" required>
+                </div>
+                <button type="submit" class="reservation-button">Book Now</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Jafra. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
