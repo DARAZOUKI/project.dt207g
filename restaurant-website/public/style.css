@@ -88,6 +88,13 @@ p {
     
     line-height: 1.6;
 }
+h1 a{
+    color: #f4f4f4;
+    text-decoration: none;
+}
+h1 a:hover{
+    color: #FFD700;
+}
 /* About section styles */
 .about-content {
     display: flex;
@@ -208,6 +215,9 @@ footer {
     width: 20px;
     height: 20px;
     
+}
+.lock-icon img:hover{
+color: #FFD700;
 }
 .logo-container {
     display: flex;
