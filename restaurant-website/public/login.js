@@ -3,20 +3,27 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username, password })
-    });
+    try {
+        const response = await fetch('https://project-dt207g.onrender.com/api/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, password })
+        });
 
-    const data = await response.json();
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('Login failed:', errorData);
+            alert(errorData.message || 'Login failed');
+            return;
+        }
 
-    if (response.ok) {
+        const data = await response.json();
         localStorage.setItem('token', data.token);
         window.location.href = '/admin.html';
-    } else {
-        alert(data.message || 'Login failed');
+    } catch (error) {
+        console.error('An error occurred during login:', error);
+        alert('An unexpected error occurred. Please try again later.');
     }
 });

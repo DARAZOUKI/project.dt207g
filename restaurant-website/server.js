@@ -9,7 +9,14 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 10000;
 
-app.use(cors());
+// Replace with your actual frontend domain
+const frontendDomain = 'https://project-dt207g.onrender.com';
+
+app.use(cors({
+    origin: frontendDomain,
+    methods: ['GET', 'POST'], // Include any other methods you need
+    allowedHeaders: ['Content-Type', 'Authorization'] // Include any other headers you need
+}));
 app.use(express.json());
 
 // Routes
