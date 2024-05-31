@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function fetchMenuItems() {
-    const response = await fetch('http://localhost:8000/api/menu');
+    const response = await fetch('http://localhost:10000/api/menu');
     const items = await response.json();
     const menuItemsContainer = document.getElementById('menu-items');
     menuItemsContainer.innerHTML = '';

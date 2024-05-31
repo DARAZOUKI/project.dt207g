@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const date = document.getElementById('res-date').value;
         const guests = document.getElementById('res-guests').value;
 
-        const response = await fetch('http://localhost:8000/api/reservations', {
+        const response = await fetch('http://localhost:10000/api/reservations', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ function redirectToLogin() {
 }
 
 async function fetchMenuItems() {
-    const response = await fetch('http://localhost:8000/api/menu');
+    const response = await fetch('http://localhost:10000/api/menu');
     const items = await response.json();
     const menuItemsContainer = document.getElementById('menu-items');
     menuItemsContainer.innerHTML = '';
