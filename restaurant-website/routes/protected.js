@@ -1,14 +1,13 @@
 // routes/protected.js
-
 const express = require('express');
 const router = express.Router();
-const { verifyToken } = require('../middleware/authMiddleware');
+const { protect } = require('../middleware/authMiddleware');
 
-// Debugging: Check if verifyToken is defined
-console.log('verifyToken middleware:', verifyToken);
+// Debugging: Check if protect is defined
+console.log('Protect middleware:', protect);
 
 // Protected route
-router.get('/protected', verifyToken, (req, res) => {
+router.get('/protected', protect, (req, res) => {
     res.json({ message: 'Protected route accessed successfully', user: req.user });
 });
 

@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const path = require('path');
-const { verifyToken } = require('./middleware/authMiddleware');
+const { protect } = require('./middleware/authMiddleware');
 
 dotenv.config();
 
@@ -17,6 +17,7 @@ app.use(express.json());
 // Debugging: Check if environment variables are loaded
 console.log('MONGODB_URI:', process.env.MONGODB_URI);
 console.log('JWT_SECRET:', process.env.JWT_SECRET);
+
 
 // Routes
 const authRoutes = require('./routes/auth');
@@ -40,7 +41,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'loginOrRegister.html'));
+  res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 app.get('/reservations', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'reservation.html')); // Serve the reservation.html file

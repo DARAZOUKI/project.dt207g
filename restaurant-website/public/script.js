@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 function redirectToLogin() {
-    window.location.href = 'loginOrRegister.html';
+    window.location.href = 'login.html';
 }
 
 async function fetchMenuItems() {
