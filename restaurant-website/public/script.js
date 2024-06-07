@@ -1,3 +1,5 @@
+
+//script.js
 document.addEventListener('DOMContentLoaded', () => {
     fetchMenuItems();
 
@@ -7,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = document.getElementById('res-name').value;
         const phone = document.getElementById('res-phone').value;
         const date = document.getElementById('res-date').value;
+        const time = document.getElementById('res-time').value; 
         const guests = document.getElementById('res-guests').value;
 
         const response = await fetch('http://localhost:10000/api/reservations', {
@@ -14,19 +17,20 @@ document.addEventListener('DOMContentLoaded', () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ name, phone, date, guests }),
+            body: JSON.stringify({ name, phone, date,time, guests }),
         });
 
         if (response.ok) {
             alert('Reservation made successfully');
-            reservationForm.reset();
+            window.location.href = 'reservation.html'; 
         } else {
+            const errorData = await response.json();
             alert('Failed to make reservation');
         }
     });
 });
 function redirectToLogin() {
-    window.location.href = '/login.html';
+    window.location.href = 'loginOrRegister.html';
 }
 
 async function fetchMenuItems() {

@@ -1,7 +1,9 @@
+//routes/reservation.js
+
 const express = require('express');
 const Reservation = require('../models/Reservation');
 const router = express.Router();
-const { protect } = require('../middleware/auth');
+const { protect } = require('../middleware/authMiddleware');
 
 // Get all reservations
 router.get('/', protect, async (req, res) => {
@@ -16,6 +18,9 @@ router.get('/', protect, async (req, res) => {
 // Add a reservation
 router.post('/', async (req, res) => {
     const { name, phone, date, time, guests } = req.body;
+    if (!name || !phone || !date || !time || !guests) {
+        return res.status(400).json({ error: 'All fields are required' });
+    }
     try {
         const reservation = await Reservation.create({ name, phone, date, time, guests });
         res.status(201).json(reservation);
@@ -35,3 +40,4 @@ router.delete('/:id', protect, async (req, res) => {
 });
 
 module.exports = router;
+

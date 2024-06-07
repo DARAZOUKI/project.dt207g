@@ -1,10 +1,13 @@
+//routes/auth.js
+
 const express = require('express');
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
+const { verifyToken } = require('../middleware/authMiddleware');
 const router = express.Router();
 
 // Temporary register route for creating an admin user
-router.post('/register-admin', async (req, res) => {
+router.post('/register', async (req, res) => {
     const { username, password } = req.body;
     try {
         const existingUser = await User.findOne({ username });
@@ -24,16 +27,18 @@ router.post('/login', async (req, res) => {
     const { username, password } = req.body;
     try {
         const user = await User.findOne({ username });
-        if (user && (await user.matchPassword(password))) {
-            const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-                expiresIn: '1h'
-            });
-            res.json({ token });
-        } else {
-            res.status(401).json({ message: 'Invalid credentials' });
+        if (!user) {
+            return res.status(401).json({ message: 'Invalid username' });
         }
+        if (!(await user.matchPassword(password))) {
+            return res.status(401).json({ message: 'Invalid password' });
+        }
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+            expiresIn: '1h'
+        });
+        res.json({ token });
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 });
 

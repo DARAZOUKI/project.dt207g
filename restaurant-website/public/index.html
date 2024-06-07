@@ -17,11 +17,12 @@
                 <ul>
                     <li><a href="#menu">Menu</a></li>
                     <li><a href="#about">About Us</a></li>
-                    <li><a href="#reservation">Reservation</a></li>
+                    <li><a href="reservation.html">Reservation</a></li>
+                    <li><a href="loginOrRegister.html">Register-login</a></li>
                 </ul>
             </nav>
             <div class="lock-icon" onclick="redirectToLogin()">
-                <img src="lock-icon2.jpg" alt="Admin Login">
+                <img src="lock.png" alt="Admin Login">
             </div>
         </div>
     </header>
@@ -45,8 +46,9 @@
                     <p><strong>Contact Us:</strong></p>
                     <ul>
                         <li><strong>Address:</strong> Mariatorget 3, Stockholm, Sweden</li>
-                        <li><strong>Phone:</strong> 078952312</li>
                         <li><strong>Email:</strong> Jafra.palastine@gmail.com</li>
+                        <li><strong>Phone:</strong> 078952312</li>
+                      
                     </ul>
                 </div>
                
@@ -65,6 +67,10 @@
                 <div class="form-group">
                     <label for="res-date">Date</label>
                     <input type="date" id="res-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="res-time">Time</label>  <!-- Add this field -->
+                    <input type="time" id="res-time" required>  <!-- Add this field -->
                 </div>
                 <div class="form-group">
                     <label for="res-guests">Number of Guests</label>

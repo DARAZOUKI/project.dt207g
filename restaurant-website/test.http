@@ -1,0 +1,2 @@
+GET http://localhost:10000/api/protected
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjBmMDlkYzdhN2NiZTg1YzljZDVjYSIsImlhdCI6MTcxNzY3MTU5MywiZXhwIjoxNzE3Njc1MTkzfQ.vRPxk2_QYtZJZypV7282dlud-ZWByUxr_wVvtH_eMJs

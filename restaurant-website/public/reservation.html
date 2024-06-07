@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Reservation</title>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="logo.jpg" alt="Jafra Logo" class="logo">
+                <h1><a href="index.html">Jafra</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html#menu">Menu</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="reservation.html">Reservation</a></li>
+                    <li><a href="loginOrRegister.html">Register-login</a></li>
+                </ul>
+            </nav>
+            <div class="lock-icon" onclick="redirectToLogin()">
+                <img src="lock.png" alt="Admin Login">
+            </div>
+        </div>
+    </header>
+    <main>
+        <section id="reservations">
+        <h1>Existing Reservations</h1>
+        <div id="reservation-list" class="reservation-list">
+            <!-- Reservations will be listed here -->
+        </div>
+        </section>
+    </main>
+   
+    <script src="reservation.js"></script>
+    
+</body>
+</html>

@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('token');
     if (!token) {
-        window.location.href = '/login.html';
+        window.location.href = '/loginOrRegister.html';
     }
     
     fetchMenuItems();
@@ -52,7 +52,7 @@ async function fetchMenuItems() {
             <div class="item-image">
                 <img src="${item.image}" alt="${item.name}" width="100">
             </div>
-            <button onclick="editMenuItem('${item._id}')">Edit</button>
+            <button onclick="editMenuItem('${item._id}', '${item.name}', '${item.description}', '${item.price}', '${item.image}')">Edit</button>
             <button onclick="deleteMenuItem('${item._id}')">Delete</button>
         `;
         menuItemsContainer.appendChild(menuItem);
@@ -76,49 +76,40 @@ async function deleteMenuItem(id) {
     }
 }
 
-function editMenuItem(id) {
-    // Fetch the menu item details and populate the form for editing
-    const token = localStorage.getItem('token');
-    fetch(`/api/menu/${id}`, {
-        headers: {
-            'Authorization': `Bearer ${token}`
+async function editMenuItem(id, name, description, price, image) {
+    // Display the menu item details in the form for editing
+    document.getElementById('name').value = name;
+    document.getElementById('description').value = description;
+    document.getElementById('price').value = price;
+    document.getElementById('image').value = image;
+
+    // Update the form submission to handle editing
+    document.getElementById('menuForm').onsubmit = async (e) => {
+        e.preventDefault();
+        const token = localStorage.getItem('token');
+        const name = document.getElementById('name').value;
+        const description = document.getElementById('description').value;
+        const price = document.getElementById('price').value;
+        const image = document.getElementById('image').value;
+
+        const response = await fetch(`/api/menu/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ name, description, price, image })
+        });
+
+        if (response.ok) {
+            alert('Menu item updated successfully');
+            fetchMenuItems(); // Refresh the menu items
+            // Reset the form submission to handle adding new items
+            document.getElementById('menuForm').onsubmit = addMenuItem;
+        } else {
+            alert('Failed to update menu item');
         }
-    })
-    .then(response => response.json())
-    .then(item => {
-        document.getElementById('name').value = item.name;
-        document.getElementById('description').value = item.description;
-        document.getElementById('price').value = item.price;
-        document.getElementById('image').value = item.image;
-        
-        // Update the form submission to handle editing
-        document.getElementById('menuForm').onsubmit = async (e) => {
-            e.preventDefault();
-            const token = localStorage.getItem('token');
-            const name = document.getElementById('name').value;
-            const description = document.getElementById('description').value;
-            const price = document.getElementById('price').value;
-            const image = document.getElementById('image').value;
-    
-            const response = await fetch(`/api/menu/${id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({ name, description, price, image })
-            });
-    
-            if (response.ok) {
-                alert('Menu item updated successfully');
-                fetchMenuItems(); // Refresh the menu items
-                // Reset the form submission to handle adding new items
-                document.getElementById('menuForm').onsubmit = addMenuItem;
-            } else {
-                alert('Failed to update menu item');
-            }
-        };
-    });
+    };
 }
 
 function addMenuItem(e) {
@@ -145,5 +136,3 @@ function addMenuItem(e) {
         alert('Failed to add menu item');
     }
 }
-
-
