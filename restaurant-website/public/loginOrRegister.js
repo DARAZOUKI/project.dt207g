@@ -6,7 +6,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
   const password = document.getElementById('registerPassword').value; // Update the ID to avoid conflict
 
   try {
-      const response = await fetch('http://localhost:10000/api/auth/register', {
+      const response = await fetch('https://project-dt207g.onrender.com/api/auth/register', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
@@ -32,7 +32,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   const username = document.getElementById('loginUsername').value; // Update the ID to avoid conflict
   const password = document.getElementById('loginPassword').value; // Update the ID to avoid conflict
   try {
-      const response = await fetch('http://localhost:10000/api/auth/login', {
+      const response = await fetch('https://project-dt207g.onrender.com/api/auth/login', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
