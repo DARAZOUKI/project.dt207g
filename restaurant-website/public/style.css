@@ -53,19 +53,47 @@ nav ul li a:hover {
     color: #FFD700;
 }
 
+h1 a{
+    color: #f4f4f4;
+    text-decoration: none;
+}
+h1 a:hover{
+    color: #FFD700;
+}
+
+.lock-icon {
+    position: fixed;
+    top: 20px;
+    left: 10px;
+    cursor: pointer;
+    z-index: 1000; /* Ensure it's on top */
+}
 .lock-icon {
     cursor: pointer;
-    transition: transform 0.3s;
+}
+
+.menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-icon .bars {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px;
+    background: white;
 }
 
 .lock-icon img {
-    width: 30px;
-    height: 30px;
-    background-color: transparent;
+    width: 20px;
+    height: 20px;
+    
 }
-
-.lock-icon:hover {
-    transform: scale(1.1);
+.lock-icon img:hover{
+color: #FFD700;
 }
 
 main {
@@ -88,13 +116,7 @@ p {
     
     line-height: 1.6;
 }
-h1 a{
-    color: #f4f4f4;
-    text-decoration: none;
-}
-h1 a:hover{
-    color: #FFD700;
-}
+
 /* About section styles */
 .about-content {
     display: flex;
@@ -156,6 +178,7 @@ h1 a:hover{
 .menu-items-container {
     display: flex;
     flex-wrap: wrap;
+ 
 }
 .item-details {
     margin-bottom: 10px;
@@ -168,6 +191,8 @@ h1 a:hover{
 .item-image img {
     display: block;
     margin-top: 10px;
+    max-width: 100%;
+    height: auto;
 }
 
 
@@ -203,22 +228,7 @@ footer {
     bottom: 0;
     width: 100%;
 }
-.lock-icon {
-    position: fixed;
-    top: 20px;
-    left: 10px;
-    cursor: pointer;
-    z-index: 1000; /* Ensure it's on top */
-}
 
-.lock-icon img {
-    width: 20px;
-    height: 20px;
-    
-}
-.lock-icon img:hover{
-color: #FFD700;
-}
 .logo-container {
     display: flex;
     align-items: center;
@@ -230,20 +240,10 @@ color: #FFD700;
     margin-right: 10px;
 }
 
-.lock-icon {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    cursor: pointer;
-    z-index: 1000; /* Ensure it's on top */
-}
 
-.lock-icon img {
-    width: 30px;
-    height: 30px;
-}
+
 .reservation-form {
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -263,15 +263,15 @@ color: #FFD700;
 }
 
 .reservation-form .form-group input {
-    width: 100%;
-    padding: 10px;
+    width: 90%;
+    padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
 .reservation-button {
     display: block;
-    width: 100%;
+    width: 90%;
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -330,20 +330,10 @@ color: #FFD700;
         transform: translateY(0);
     }
 }
+
 /* Adjustments for smaller screens */
 @media only screen and (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .logo-container {
-        margin-bottom: 20px;
-    }
-
-    nav ul {
-        margin-top: 20px;
-    }
+   
 
     .lock-icon {
         margin-top: 20px;
@@ -376,9 +366,8 @@ color: #FFD700;
 
 /* Adjustments for even smaller screens (e.g., smartphones) */
 @media only screen and (max-width: 480px) {
-    .logo {
-        width: 40px;
-        height: 40px;
+    .logo-container {
+        margin-left: 30px;
     }
 
     nav ul li {
@@ -386,8 +375,8 @@ color: #FFD700;
     }
 
     .lock-icon img {
-        width: 25px;
-        height: 25px;
+        width: 15px;
+        height: 15px;
     }
 
     .menu-items-container {
@@ -414,5 +403,93 @@ color: #FFD700;
 
     .reservation-form {
         padding: 10px;
+    }
+    .reservation-item {
+        padding: 8px;
+    }
+
+    .reservation-item p {
+        margin: 4px 0;
+    }
+    .menu-item {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .item-details, .item-price, .item-image {
+        width: 100%;
+        text-align: center;
+    }
+
+    .item-image img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+/* Small screen styling */
+@media (max-width: 768px) {
+    .menu-btn {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-menu ul li {
+        margin: 0.5rem 0;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: #333;
+        z-index: 1000;
+    }
+
+    .nav-menu.visible {
+        display: flex;
+    }
+    .reservation-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .reservation-item p {
+        margin: 5px 0;
+    }
+
+    .reservation-item p:last-child {
+        margin-left: 0;
+        align-self: flex-end;
+    }
+    .menu-item {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .item-details, .item-price, .item-image {
+        width: 100%;
+        text-align: center;
+    }
+
+    .item-image img {
+        max-width: 80%;
+        height: auto;
     }
 }

@@ -61,6 +61,20 @@ h1 a:hover{
     color: #FFD700;
 }
 
+.menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-icon .bars {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px;
+    background: white;
+}
 main {
     padding: 20px;
 }
@@ -224,4 +238,120 @@ input[type="submit"]:hover {
 .menu-item .delete-btn {
     background-color: #dc3545;
     color: #fff;
+}
+@media (max-width: 768px) {
+    .content-container {
+        flex-direction: column;
+    }
+
+    .form-container {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
+/* Small screen styling */
+@media (max-width: 768px) {
+    .menu-btn {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-menu ul li {
+        margin: 0.5rem 0;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: #333;
+        z-index: 1000;
+    }
+
+    .nav-menu.visible {
+        display: flex;
+    }
+    .menu-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu-item img {
+        height: 80px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .menu-item .item-details {
+        margin: 0 0 10px 0;
+        width: 100%;
+    }
+
+    .menu-item .item-price {
+        text-align: left;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .menu-item button {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .menu-items-container {
+        padding: 20px;
+        max-height: none;
+    }
+    .login-container {
+        margin: 30px 20px;
+        padding: 15px;
+    }
+
+    .login-container h1 {
+        font-size: 24px;
+    }
+
+    .login-container form input {
+        padding: 8px;
+        
+    }
+
+    .login-container form button {
+        padding: 8px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        margin: 20px 10px;
+        padding: 10px;
+    }
+
+    .login-container h1 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .login-container form input {
+        padding: 6px;
+        margin-bottom: 8px;
+    }
+
+    .login-container form button {
+        padding: 6px;
+        font-size: 12px;
+    }
 }
