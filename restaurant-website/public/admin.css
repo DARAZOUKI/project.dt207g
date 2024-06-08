@@ -150,7 +150,7 @@ input[type="submit"]:hover {
 
 .login-container form input {
     display: block;
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -158,9 +158,9 @@ input[type="submit"]:hover {
 }
 
 .login-container form button {
-    width: 100%;
+    width: 60%;
     padding: 10px;
-    border: none;
+    border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #ffd700;
     color: #0a0a0a;

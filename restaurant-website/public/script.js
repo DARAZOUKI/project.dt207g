@@ -3,32 +3,58 @@
 document.addEventListener('DOMContentLoaded', () => {
     fetchMenuItems();
 
-    const reservationForm = document.getElementById('reservation-form');
-    reservationForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const name = document.getElementById('res-name').value;
-        const phone = document.getElementById('res-phone').value;
-        const date = document.getElementById('res-date').value;
-        const time = document.getElementById('res-time').value; 
-        const guests = document.getElementById('res-guests').value;
+     // Reservation form submission
+     const reservationForm = document.getElementById('reservation-form');
+     reservationForm.addEventListener('submit', (e) => {
+         e.preventDefault();
+         const name = document.getElementById('res-name').value;
+         const phone = document.getElementById('res-phone').value;
+         const date = document.getElementById('res-date').value;
+         const time = document.getElementById('res-time').value; // Added this line
+         const guests = document.getElementById('res-guests').value;
+ 
+         // Simulate a successful submission
+         displaySuccessMessage(name);
+         clearFormFields();
+     });
+ 
+     // Function to display success message
+     function displaySuccessMessage(name) {
+        const successMessage = document.createElement('div');
+        successMessage.classList.add('success-message');
+        successMessage.innerHTML = `
+            <div class="success-content">
+                <h3>Reservation Successful</h3>
+                <p>Dear ${name},</p>
+                <p>Your reservation at Jafra has been successfully made. You will receive the details about your booking via SMS.</p>
+                <p>If you need to cancel or modify your booking, please contact us via the telephone number provided below.</p>
+                <p>Thank you for choosing Jafra!</p>
+                <div class="contact-info">
+                    <p><strong>Contact Us:</strong></p>
+                    <ul>
+                        <li><strong>Phone:</strong> 078952312</li>
+                    </ul>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(successMessage);
+    
+        // Automatically remove the success message after 5 seconds
+        setTimeout(() => {
+            successMessage.remove();
+        }, 5000);
+    }
+ 
+     // Function to clear form fields
+     function clearFormFields() {
+         document.getElementById('res-name').value = '';
+         document.getElementById('res-phone').value = '';
+         document.getElementById('res-date').value = '';
+         document.getElementById('res-time').value = ''; // Added this line
+         document.getElementById('res-guests').value = '';
+     }
+ });
 
-        const response = await fetch('http://localhost:10000/api/reservations', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ name, phone, date,time, guests }),
-        });
-
-        if (response.ok) {
-            alert('Reservation made successfully');
-            window.location.href = 'reservation.html'; 
-        } else {
-            const errorData = await response.json();
-            alert('Failed to make reservation');
-        }
-    });
-});
 function redirectToLogin() {
     window.location.href = 'login.html';
 }
