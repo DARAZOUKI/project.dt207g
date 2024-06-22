@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const price = document.getElementById('price').value;
         const image = document.getElementById('image').value;
     
-        const response = await fetch('http://localhost:10000/api/menu', {
+        const response = await fetch('https://project-dt207g.onrender.com/api/menu', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function fetchMenuItems() {
-    const response = await fetch('http://localhost:10000/api/menu');
+    const response = await fetch('https://project-dt207g.onrender.com/api/menu');
     const items = await response.json();
     const menuItemsContainer = document.getElementById('menu-items');
     menuItemsContainer.innerHTML = '';
@@ -62,7 +62,7 @@ async function fetchMenuItems() {
 
 async function deleteMenuItem(id) {
     const token = localStorage.getItem('token');
-   const response = await fetch(`http://localhost:10000/api/menu/${id}`, {
+   const response = await fetch(`https://project-dt207g.onrender.com/api/menu/${id}`, {
         method: 'DELETE',
         headers: {
             'Authorization': `Bearer ${token}`
@@ -91,7 +91,7 @@ async function editMenuItem(id, name, description, price, image) {
         const price = document.getElementById('price').value;
         const image = document.getElementById('image').value;
 
-        const response = await fetch(`http://localhost:10000/api/menu/${id}`, {
+        const response = await fetch(`https://project-dt207g.onrender.com/api/menu/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -118,7 +118,7 @@ function addMenuItem(e) {
     const price = document.getElementById('price').value;
     const image = document.getElementById('image').value;
 
-    const response = fetch('http://localhost:10000/api/menu', {
+    const response = fetch('https://project-dt207g.onrender.com/api/menu', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

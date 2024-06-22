@@ -2,6 +2,7 @@
 //script.js
 document.addEventListener('DOMContentLoaded', () => {
     fetchMenuItems();
+    
 
      // Reservation form submission
      const reservationForm = document.getElementById('reservation-form');
@@ -60,7 +61,7 @@ function redirectToLogin() {
 }
 
 async function fetchMenuItems() {
-    const response = await fetch('http://localhost:10000/api/menu');
+    const response = await fetch('https://project-dt207g.onrender.com/api/menu');
     const items = await response.json();
     const menuItemsContainer = document.getElementById('menu-items');
     menuItemsContainer.innerHTML = '';

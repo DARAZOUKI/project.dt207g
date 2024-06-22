@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const response = await fetch('http://localhost:10000/api/reservations', {
+        const response = await fetch('https://project-dt207g.onrender.com/api/reservations', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
              if (confirmation) {
                  try {
                      const token = localStorage.getItem('token');
-                     const response = await fetch(`http://localhost:10000/api/reservations/${reservationId}`, {
+                     const response = await fetch(`https://project-dt207g.onrender.com/api/reservations/${reservationId}`, {
                          method: 'DELETE',
                          headers: {
                              'Authorization': `Bearer ${token}`,
