@@ -134,3 +134,32 @@ function addMenuItem(e) {
         alert('Failed to add menu item');
     }
 }
+async function fetchReservations() {
+    const response = await fetch('https://project-dt207g.onrender.com/api/reservations'); 
+    const reservations = await response.json();
+    const reservationListContainer = document.getElementById('reservation-list');
+    reservationListContainer.innerHTML = ''; 
+
+    if (reservations.length > 0) {
+        reservations.forEach(reservation => {
+            const reservationItem = document.createElement('div');
+            reservationItem.classList.add('reservation-item');
+
+            reservationItem.innerHTML = `
+                <div class="reservation-details">
+                    <h3>Reservation for ${reservation.name}</h3>
+                    <p><strong>Date:</strong> ${reservation.date}</p>
+                    <p><strong>Time:</strong> ${reservation.time}</p>
+                    <p><strong>Guests:</strong> ${reservation.guests}</p>
+                    <p><strong>Phone:</strong> ${reservation.phone}</p>
+                </div>
+            `;
+            reservationListContainer.appendChild(reservationItem);
+        });
+    } else {
+        reservationListContainer.innerHTML = '<p>No reservations found.</p>';
+    }
+}
+
+// Call the function when the page loads
+document.addEventListener('DOMContentLoaded', fetchReservations);

@@ -1,3 +1,5 @@
+// middleware/authamaiddleware.js
+
 const jwt = require('jsonwebtoken');
 const User = require('../models/User'); // Assume User model exists
 
