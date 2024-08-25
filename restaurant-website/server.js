@@ -43,7 +43,7 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
-app.get('/reservations', (req, res) => {
+app.get('/reservation', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'Admin.html')); // Serve the reservation.html file
 });
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })

@@ -135,7 +135,7 @@ function addMenuItem(e) {
     }
 }
 async function fetchReservations() {
-    const response = await fetch('https://project-dt207g.onrender.com/api/reservations'); 
+    const response = await fetch('https://project-dt207g.onrender.com/api/reservation'); 
     const reservations = await response.json();
     const reservationListContainer = document.getElementById('reservation-list');
     reservationListContainer.innerHTML = ''; 
