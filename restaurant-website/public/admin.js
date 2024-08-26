@@ -134,32 +134,73 @@ function addMenuItem(e) {
         alert('Failed to add menu item');
     }
 }
-async function fetchReservations() {
-    const response = await fetch('https://project-dt207g.onrender.com/api/reservations'); 
-    const reservations = await response.json();
-    const reservationListContainer = document.getElementById('reservation-list');
-    reservationListContainer.innerHTML = ''; 
+document.addEventListener('DOMContentLoaded', () => {
+    fetchReservations();
 
-    if (reservations.length > 0) {
-        reservations.forEach(reservation => {
-            const reservationItem = document.createElement('div');
-            reservationItem.classList.add('reservation-item');
+    async function fetchReservations() {
+        try {
+            const response = await fetch('https://project-dt207g.onrender.com/api/reservations', {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}` // Ensure the token is stored and retrieved correctly
+                }
+            });
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const reservations = await response.json();
+            const reservationListContainer = document.getElementById('reservation-list');
+            reservationListContainer.innerHTML = ''; 
 
-            reservationItem.innerHTML = `
-                <div class="reservation-details">
-                    <h3>Reservation for ${reservation.name}</h3>
-                    <p><strong>Date:</strong> ${reservation.date}</p>
-                    <p><strong>Time:</strong> ${reservation.time}</p>
-                    <p><strong>Guests:</strong> ${reservation.guests}</p>
-                    <p><strong>Phone:</strong> ${reservation.phone}</p>
-                </div>
-            `;
-            reservationListContainer.appendChild(reservationItem);
-        });
-    } else {
-        reservationListContainer.innerHTML = '<p>No reservations found.</p>';
+            if (reservations.length > 0) {
+                reservations.forEach(reservation => {
+                    const reservationItem = document.createElement('div');
+                    reservationItem.classList.add('reservation-item');
+
+                    reservationItem.innerHTML = `
+                        <div class="reservation-details">
+                            <h3>Reservation for ${reservation.name}</h3>
+                            <p><strong>Date:</strong> ${reservation.date}</p>
+                            <p><strong>Time:</strong> ${reservation.time}</p>
+                            <p><strong>Guests:</strong> ${reservation.guests}</p>
+                            <p><strong>Phone:</strong> ${reservation.phone}</p>
+                            <button class="delete-reservation-btn" data-id="${reservation._id}">Delete</button>
+                        </div>
+                    `;
+                    reservationListContainer.appendChild(reservationItem);
+                });
+
+                // Add event listeners to delete buttons
+                document.querySelectorAll('.delete-reservation-btn').forEach(button => {
+                    button.addEventListener('click', async (e) => {
+                        const reservationId = e.target.getAttribute('data-id');
+                        await deleteReservation(reservationId);
+                        fetchReservations(); // Refresh the list after deletion
+                    });
+                });
+            } else {
+                reservationListContainer.innerHTML = '<p>No reservations found.</p>';
+            }
+        } catch (error) {
+            console.error('Error fetching reservations:', error);
+            const reservationListContainer = document.getElementById('reservation-list');
+            reservationListContainer.innerHTML = '<p>Error loading reservations.</p>';
+        }
     }
-}
 
-// Call the function when the page loads
-document.addEventListener('DOMContentLoaded', fetchReservations);
+    async function deleteReservation(id) {
+        try {
+            const response = await fetch(`https://project-dt207g.onrender.com/api/reservations/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}` 
+                }
+            });
+            if (!response.ok) {
+                throw new Error(`Failed to delete reservation. HTTP status: ${response.status}`);
+            }
+        } catch (error) {
+            console.error('Error deleting reservation:', error);
+        }
+    }
+});
+
