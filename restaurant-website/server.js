@@ -14,19 +14,19 @@ const PORT = process.env.PORT || 10000;
 app.use(cors());
 app.use(express.json());
 
-// Debugging: Check if environment variables are loaded
+// Debugging
 console.log('MONGODB_URI:', process.env.MONGODB_URI);
 console.log('JWT_SECRET:', process.env.JWT_SECRET);
 
 
 // Routes
 const authRoutes = require('./routes/auth');
-const protectedRoute = require('./routes/protected'); // Ensure the correct file name
+const protectedRoute = require('./routes/protected'); 
 const menuRoutes = require('./routes/menu');
 const reservationRoutes = require('./routes/reservation');
 
 app.use('/api/auth', authRoutes);
-app.use('/api', protectedRoute); // Correct the endpoint path
+app.use('/api', protectedRoute); 
 app.use('/api/menu', menuRoutes);
 app.use('/api/reservations', reservationRoutes);
 
@@ -44,7 +44,7 @@ app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 app.get('/reservation', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'Admin.html')); // Serve the reservation.html file
+    res.sendFile(path.join(__dirname, 'public', 'Admin.html')); 
 });
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))

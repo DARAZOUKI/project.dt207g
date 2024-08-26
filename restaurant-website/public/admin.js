@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
         if (response.ok) {
             alert('Menu item added successfully');
-            fetchMenuItems(); // Refresh the menu items
+            fetchMenuItems();
         } else {
             alert('Failed to add menu item');
         }
@@ -71,7 +71,7 @@ async function deleteMenuItem(id) {
 
     if (response.ok) {
         alert('Menu item deleted successfully');
-        fetchMenuItems(); // Refresh the menu items
+        fetchMenuItems(); 
     } else {
         alert('Failed to delete menu item');
     }
@@ -102,7 +102,7 @@ async function editMenuItem(id, name, description, price, image) {
 
         if (response.ok) {
             alert('Menu item updated successfully');
-            fetchMenuItems(); // Refresh the menu items
+            fetchMenuItems();
             document.getElementById('menuForm').onsubmit = addMenuItem;
         } else {
             alert('Failed to update menu item');
